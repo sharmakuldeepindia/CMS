@@ -268,6 +268,7 @@ function getAllUserRules() {
 					}
 				},
 				error : function(e) {
+					
 					console.log(e);
 				}
 			});

@@ -319,7 +319,8 @@ function getUserRules(){
 			
 		},
 		error: function(e){
-			alert("Error in getting Rules");
+//			alert("Error in getting Rules");
+			alert("Comming Soon");
 		}
 	
 	});
