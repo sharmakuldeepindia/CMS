@@ -18,7 +18,7 @@ public class JPA_Criteria_Test {
 	@Test
 	public void runCriteriaTest() {
 		
-		fs.testJPACriteriaQuery();
+//		fs.testJPACriteriaQuery();
 		
 	}
 	@Test

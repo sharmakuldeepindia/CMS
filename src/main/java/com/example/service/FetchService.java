@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.model.ContractTable;
 import com.example.model.Role;
 import com.example.model.User;
 
@@ -106,18 +105,18 @@ public class FetchService {
 		return l;
 	}
 
-	public void testJPACriteriaQuery() {
-		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery cq = cb.createQuery();
-		Root from = cq.from(ContractTable.class);
-		cq.select(from);
-		cq.where(cb.lessThan(from.get("id"), 20));
-		TypedQuery<ContractTable> typedQuery = em.createQuery(cq).setMaxResults(10);
-		List<ContractTable> resultlist = typedQuery.getResultList();
-		for (ContractTable ct : resultlist) {
-			System.out.println(ct);
-		}
-	}
+//	public void testJPACriteriaQuery() {
+//		CriteriaBuilder cb = em.getCriteriaBuilder();
+//		CriteriaQuery cq = cb.createQuery();
+//		Root from = cq.from(ContractTable.class);
+//		cq.select(from);
+//		cq.where(cb.lessThan(from.get("id"), 20));
+//		TypedQuery<ContractTable> typedQuery = em.createQuery(cq).setMaxResults(10);
+//		List<ContractTable> resultlist = typedQuery.getResultList();
+//		for (ContractTable ct : resultlist) {
+//			System.out.println(ct);
+//		}
+//	}
 
 	public void testUser() {
 		Query q = em.createQuery("select u from User u");
