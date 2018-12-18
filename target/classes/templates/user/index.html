@@ -1,0 +1,121 @@
+<style>
+input {
+	width: 70px;
+	border-radius: 5px;
+	height: 25px;
+}
+
+
+
+</style>
+<div class="">
+	<div th:fragment="index">
+		<div class="dialog" id="ruleTableDialog"
+			style="background-color: white; padding: 0px">
+			<div class="userHomeMenuTop"
+				style="background-color: white; height: 30px;">
+
+
+				<!-- <input style="float: left; border-radius: 7px" type="text"
+					class="ruleInputTextLarge" placeholder="Search by name"
+					name="srch-term" id="ruleSearchBox">
+ -->
+
+				
+				<button class="btn btn-xs btn-primary addRuleButton"
+					style="float: left; line-height: 1.0; margin-left: 5px"
+					onclick="addNewRule()">Add Rule</button>
+			</div>
+			<div id="ruleDiv" style=""></div>
+
+
+		</div>
+
+
+		<div class="dialog" id="tokenSelectDialog"
+			style="background-color: white">
+			<table class="table table-bordered ruleTable">
+				<tr>
+					<td>Select Instrument</td>
+					<td><select class=ruleInputTextMedium
+						name="addTokenInstrument" id="addTokenInstrument"
+						onchange="loadAddTokenSymbol('openAddTokenDiv')">
+							<option value>Select Instrument</option>
+					</select></td>
+					<td>Select Symbol</td>
+					<td><select class=ruleInputTextMedium name="addTokenSymbol"
+						id="addTokenSymbol"
+						onchange="loadAddTokenExpiry('openAddTokenDiv')">
+							<option value>Select Symbol</option>
+					</select></td>
+					<td>Select Expiry</td>
+					<td style="display: none" id="expiryFUT"><select
+						class="ruleInputTextMedium" name="addTokenExpiry1"
+						id="addTokenExpiry1" onchange="">
+							<option value>Select Expiry</option>
+					</select></td>
+					<td style="display: none" id="expiryOPT"><select
+						class=ruleInputTextMedium name="addTokenExpiry2"
+						id="addTokenExpiry2" onchange="resetStrike()">
+							<option value>Select Expiry</option>
+					</select></td>
+				</tr>
+				<tr id="OPTRow" style="display: none">
+					<td>Select Call/Put</td>
+					<td><select class=ruleInputTextMedium name="addTokenCallPut"
+						id="addTokenCallPut" onchange="loadAddTokenStrike()">
+							<option value>Select One</option>
+							<option value="CE">CE</option>
+							<option value=PE>PE</option>
+					</select></td>
+
+					<td>Select Strike</td>
+					<td><select class=ruleInputTextMedium name="addTokenStrike"
+						id="addTokenStrike" onchange="">
+							<option value>Select Strike</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td colspan="12" style="text-align: center">
+						<button class="btn btn-xs btn-info" value="ADD"
+							onclick="appendUserToken()">ADD</button>
+
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="" id="" style=";overflow:scroll">
+			
+			<table class="table table-bordered table-striped table-hover " id="marketWatchTable"
+				style="font-size: 14px; line-height: .5em;" data-sorting="true" data-paging="true"
+				 >
+				<thead style="background-color: #f0ad4d">
+				<tr>
+					<th data-breakpoints="xs" data-type="number">S.No.</th>
+					<th>Rule Name</th>
+					<th>Buy Qty</th>
+					<th>Buy Px</th>
+					<th>Sell Qty</th>
+					<th>Sell Px</th>
+					<th>Level</th>
+					<th hidden></th>
+					 <!-- <th><input type='text' class="form-control-sm"
+					 placeholder="Search By Name" id="ruleSearchBox"
+					  style='padding:.0em .0em;border-radius:0em;line-height:0em'/></th> -->
+					  </tr> 
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+		
+		
+		<div class="dialog" id="ruleTokensDialog">
+		
+		</div>
+
+	</div>
+</div>
+

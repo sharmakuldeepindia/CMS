@@ -1,0 +1,49 @@
+.admin-message-text {
+	font-style: normal;
+	font-size: 22px;
+	color: #004080;
+}
+
+.userHomeMenuTop {
+	width: 100%;
+	background-color: #f0ad4e;
+}
+
+.ruleInputText {
+	width: 70px;
+	height: 30px;
+	border-radius: 5px;
+}
+
+.ruleInputTextMedium {
+	width: 120px;
+	height: 30px;
+	border-radius: 5px;
+}
+.ruleInputTextLarge {
+	width: 140px;
+	height: 30px;
+	border-radius: 5px;
+}
+
+.ruleTable{
+	
+	color:black;
+	font-size:12px;
+}
+.ruleTopDiv{
+	
+	color:black;
+	font-size:14px;
+	background-color:white;
+	margin-top:20px; */
+	border-radius:5px
+}
+.ruleAlert{
+	vertical-align:middle;
+}
+
+.customTableSmall{
+font-size: 12px;
+ line-height: .5em	
+}

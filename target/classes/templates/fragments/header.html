@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="header-css">
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" href="../../css/home.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/theme.blue.css}" href="../../css/theme.blue.css" />
+<!-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script> -->
+<script type="text/javascript" th:src="@{/js/jquery/jquery-1.9.1.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery/jquery-ui.js}"></script>
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/css/footable.bootstrap.min.css}" />
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+<!--  data table cdn files**************************
+
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<script
+	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+-->
+</head>
+<body>
+ <div class="container">
+	<div th:fragment="header">
+ 	<div style="height:30px;background-color:#f0ad4e;">
+ 		<button class="btn btn-sm btn-success" style="float:right" th:utext="${userName}"></button>
+ 		<form th:action="@{/logout}" method="get">
+			<button class="btn btn-sm btn-danger" style="float:right" name="registration"
+				type="Submit">Logout</button>
+		</form>
+ 	</div>	
+	 </div> 
+</div> 
+</body>
+</html>
+

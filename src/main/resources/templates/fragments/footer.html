@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head >
+<style type="text/css">
+
+</style>
+
+</head>
+<body>
+<div th:fragment="footer">
+  
+    <div class="container-fluid footer" style="position:fixed;height:50px;bottom:0;width:100%;background-color:skyblue">
+
+        <footer>
+        <!-- this is footer -->
+        <span style="margin:40%">© 2017 pacefin.com</span>
+          <!--   <span style="float:right" sec:authorize="isAuthenticated()">
+                | Logged user: <span sec:authentication="name"></span> |
+                Roles: <span sec:authentication="principal.authorities"></span> |
+                <a th:href="@{/logout}">Sign Out</a>
+            </span> -->
+
+      <!--   <script type="text/javascript"
+                src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+                
+
+ <div class="dropup" style="float:right">
+ <div id='messageBox'></div>
+  <button class="dropbtn" >Chat</button>
+  <div class="dropup-content">
+  <a href="#">No User</a>
+   
+  </div>
+</div>
+
+        </footer>
+    </div>
+
+</div>
+</body>
+</html>
