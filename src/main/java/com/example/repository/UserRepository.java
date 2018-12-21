@@ -14,6 +14,10 @@ import com.example.model.User;
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long> {
 	 User findByEmail(String email);
+	 User findById(Long id);
 	 @Query(value="select * from user", nativeQuery=true)
 	 List<User> findActiveUser();
+	 
+	 User findByEmailAndPassword(String email,String Password);
+	
 }
