@@ -18,6 +18,8 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -31,6 +33,8 @@ public class User {
 	@Email(message = "*Please provide a valid Email")
 	@NotEmpty(message = "*Please provide an email")
 	private String email;
+	
+	@JsonIgnore
 	@Column(name = "password")
 	@Length(min = 5, message = "*Your password must have at least 5 characters")
 	@NotEmpty(message = "*Please provide your password")
@@ -44,6 +48,16 @@ public class User {
 	private String lastName;
 	@Column(name = "active")
 	private int active;	
+	
+	@JsonIgnore
+	@Column(name = "token", unique=true)
+	private String token;
+	
+	@JsonIgnore
+	@Column(name ="tokenTimeStamp")
+	private long tokenTimeStamp;
+	
+	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
@@ -113,5 +127,21 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+	
+	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
+	public long getTokenTimeStamp() {
+		return tokenTimeStamp;
+	}
+	public void setTokenTimeStamp(long tokenTimeStamp) {
+		this.tokenTimeStamp = tokenTimeStamp;
+	}
+	
+	
 
 }

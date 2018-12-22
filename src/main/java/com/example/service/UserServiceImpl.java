@@ -32,15 +32,28 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
+	public User findUserByEmailAndPassword(String email, String password){
+		
+		return userRepository.findByEmailAndPassword(email,password);
+	}
+	
+	@Override
+	public User findUserById(Long id) {
+		return userRepository.findById(id);
+	}
+	
+	@Override
 	public List<User> findActiveUser() {
 		return  (List<User>)userRepository.findActiveUser();
 	}
-
+	
+	
 	@Override
 
 	public void saveUser(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
+        user.setTokenTimeStamp(1L);
         Role userRole1 = roleRepository.findByRole("ADMIN");
         Role userRole2 = roleRepository.findByRole("USER");
         if(user.getName()=="admin") {

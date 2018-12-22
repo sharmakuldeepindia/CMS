@@ -26,7 +26,6 @@ public class DemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... arg0) throws Exception {
 		 User u = new User("admin@gmail.com","admin","admin","admin",1);
-		
 		 if(userService.findUserByEmail(u.getEmail())==null) {
 			 userService.saveUser(u);
 		 }
