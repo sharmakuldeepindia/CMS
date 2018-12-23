@@ -3,6 +3,7 @@ package com.example.configuration;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +24,7 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     @Override
     protected void handle(HttpServletRequest request, 
       HttpServletResponse response, Authentication authentication) throws IOException {
-        String targetUrl = determineTargetUrl(authentication);
+        String targetUrl = determineTargetUrl(authentication,request);
   
         if (response.isCommitted()) {
             System.out.println("Can't redirect");
@@ -33,8 +34,30 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         redirectStrategy.sendRedirect(request, response, targetUrl);
     }
     
-    protected String determineTargetUrl(Authentication authentication) {
+    protected String determineTargetUrl(Authentication authentication,HttpServletRequest request) {
         String url="";
+        
+        System.out.println("Request URL: " + request.getRequestURL());
+        
+        Enumeration<String> headerNames = request.getHeaderNames();
+
+		while (headerNames.hasMoreElements()) {
+			System.out.println("HeaderName--------------------");
+			String headerName = headerNames.nextElement();
+			System.out.println(headerName);
+			System.out.println("Header Values --------------------");
+
+			Enumeration<String> headers = request.getHeaders(headerName);
+			while (headers.hasMoreElements()) {
+				String headerValue = headers.nextElement();
+				System.out.println(headerValue);
+			}
+			System.out.println("--------------------");
+		}
+        
+        
+        
+
          System.out.println("in determineTargetUrl()");
         Collection<? extends GrantedAuthority> authorities =  authentication.getAuthorities();
          
@@ -46,11 +69,14 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
  
         if (isDba(roles)) {
             url = "/db";
-        } else if (isAdmin(roles)) {
+        } 
+        else if (isAdmin(roles)) {
             url = "/admin/home";
-        } else if (isUser(roles)) {
+        }
+        else if (isUser(roles)) {
             url = "/user/home";
-        } else {
+        }
+        else {
             url="/accessDenied";
         }
  
