@@ -2,6 +2,7 @@ package com.example.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,28 +10,30 @@ import javax.persistence.Table;
 @Table(name="course")
 public class Course {
 
-	private long courseId;
+	private Long id;
 	private String courseName;
+	private String courseDescription;
 
 	public Course() {
 	}
 
-	public Course(String courseName) {
+	public Course(String courseName, String courseDescription) {
 		this.courseName = courseName;
+		this.courseDescription = courseDescription;
 	}
 
 	@Id
-	@GeneratedValue
-	@Column(name="COURSE_ID")
-	public long getCourseId() {
-		return this.courseId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//	@Column(name="COURSE_ID")
+	public Long getId() {
+		return this.id;
 	}
 
-	public void setCourseId(long courseId) {
-		this.courseId = courseId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	@Column(name="COURSE_NAME", nullable=false)
+	@Column(name="courseName", nullable=false)
 	public String getCourseName() {
 		return this.courseName;
 	}
@@ -38,5 +41,15 @@ public class Course {
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
+
+	public String getCourseDescription() {
+		return courseDescription;
+	}
+
+	public void setCourseDescription(String courseDescription) {
+		this.courseDescription = courseDescription;
+	}
+	
+	
 
 }
