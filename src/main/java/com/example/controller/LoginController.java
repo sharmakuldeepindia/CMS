@@ -9,15 +9,18 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.model.User;
 import com.example.service.UserService;
 
-@Controller
+@RestController
 public class LoginController {
 	
 	@Autowired
@@ -29,6 +32,14 @@ public class LoginController {
 		modelAndView.setViewName("login");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="/loginUser",method={RequestMethod.POST})
+	public String getUserName(@RequestBody User user){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("login");
+		return "Welcome to my youtube channel EkUmeed Help "+user.getEmail();
+	}
+	
 	
 	
 	@RequestMapping(value="/registration", method = RequestMethod.GET)

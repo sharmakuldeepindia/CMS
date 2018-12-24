@@ -17,10 +17,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.model.User;
 import com.example.service.UserService;
+import com.example.utility.DNAConstants;
+import com.example.utility.ErrorResponse;
  
 //import com.websystique.springboot.model.User;
 //import com.websystique.springboot.service.UserService;
@@ -79,7 +82,76 @@ public class RestApiController {
 	}
     
     
-    
+    @RequestMapping(value = { "/loginraj" }, method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<Object> loginRaj(@RequestBody String json) {
+		String email="";
+    	String password="";
+    	JSONObject jsonObj;
+		try {
+			jsonObj = new JSONObject(json);
+    		
+    	 email=(String) jsonObj.get("email");
+    	 password=(String) jsonObj.get("password");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		User userVO = userService.findUserByEmail(email);
+		
+		if (userVO == null) {
+			ErrorResponse errorResponse = new ErrorResponse(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(),
+					HttpStatus.BAD_REQUEST.name(), "Activation code is not correct.", DNAConstants.DNA_LOGIN);
+			return new ResponseEntity<>(errorResponse, null, HttpStatus.BAD_REQUEST);
+		}
+
+//		logger.warn(email+password+userVO.getPassword());
+//		String password1 = bCryptPasswordEncoder.encode(password);
+//		logger.warn(email+password1);
+		//if(bCryptPasswordEncoder.matches(password1, userVO.getPassword())){
+			long time = System.currentTimeMillis();
+			System.out.println("Time in Milliseconds: " + time);
+			userVO	.setToken(userVO.getName() + "-" + time);
+			userVO.setTokenTimeStamp(time);
+			userService.saveUser(userVO);
+			
+			return new ResponseEntity<>(userVO, null, HttpStatus.OK);
+	
+//		}else {
+//			ErrorResponse errorResponse = new ErrorResponse(System.currentTimeMillis(), HttpStatus.UNAUTHORIZED.value(),
+//					HttpStatus.UNAUTHORIZED.name(), "Email id or password is incorrect.", DNAConstants.DNA_LOGIN);
+//			return new ResponseEntity<>(errorResponse, null, HttpStatus.UNAUTHORIZED);
+//		}
+		
+//    	
+
+//    	  HashMap<String, Object> map = new HashMap<>();
+//    	  System.out.println(userName+"::::"+password);
+////    	password = bCryptPasswordEncoder.encode(password);
+//    	System.out.println(password);
+//    	 User user = userService.findUserByEmail(userName);
+//    	 if(bCryptPasswordEncoder.matches(password, user.getPassword())){
+//    		 Date date= new Date();    		 
+//    		 long time = date.getTime();
+//    		     System.out.println("Time in Milliseconds: " + time);
+//    		     user.setToken(userName+"-"+time);
+//    		     userService.saveUser(user);
+//    		     System.out.println(bCryptPasswordEncoder.matches(password, user.getPassword()));
+//    	    	 System.out.println("user:"+user.getEmail()); 
+//    	    	 map.put("token", user.getToken()); 
+//    	    	 map.put("id",user.getId());
+//    	    	 map.put("name", user.getName());
+//    	 }
+//    	 else{
+//    		 System.out.println("in this");
+// 	 		  map.put("Autorized", "false");
+//
+//    	 }
+
+		
+	}
     
     
     
