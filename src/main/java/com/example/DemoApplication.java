@@ -5,6 +5,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.example.model.User;
@@ -13,11 +15,19 @@ import com.example.service.UserService;
 
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
 @EnableScheduling
-public class DemoApplication implements CommandLineRunner {
+public class DemoApplication extends SpringBootServletInitializer  implements CommandLineRunner  {
 	@Autowired
 	RoleRepository roleRepository;
 	@Autowired
 	UserService userService;
+	
+	@Override
+	   protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+	      return application.sources(DemoApplication.class);
+	   }
+	
+	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 		
