@@ -56,6 +56,7 @@ public class UserServiceImpl implements UserService{
         user.setTokenTimeStamp(1L);
         Role userRole1 = roleRepository.findByRole("ADMIN");
         Role userRole2 = roleRepository.findByRole("USER");
+        user.setTokenTimeStamp(System.currentTimeMillis());
         if(user.getName()=="admin") {
             user.setRoles(new HashSet<Role>(Arrays.asList(userRole1)));
 

@@ -38,7 +38,6 @@ public class User {
 	@Column(name = "password")
 	@Length(min = 5, message = "*Your password must have at least 5 characters")
 	@NotEmpty(message = "*Please provide your password")
-	@Transient
 	private String password;
 	@Column(name = "name")
 	@NotEmpty(message = "*Please provide your name")
@@ -142,6 +141,10 @@ public class User {
 		this.tokenTimeStamp = tokenTimeStamp;
 	}
 	
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Email "+email+"  Password :"+password;
+	}
 
 }
