@@ -15,14 +15,17 @@ public class CourseFiles {
 	private String fileType;
 	private String fileLocation;
 	private String fileName;
+	private String fileDescription;
 	public CourseFiles(){}
 	
-	public CourseFiles(long courseId, String fileType, String fileLocation, String fileName) {
+	public CourseFiles(long courseId, String fileType, String fileLocation, 
+						String fileName, String fileDescription) {
 		super();
 		this.courseId = courseId;
 		this.fileType = fileType;
 		this.fileLocation = fileLocation;
 		this.fileName = fileName;
+		this.fileDescription = fileDescription;
 	}
 	@Id
 	@GeneratedValue
@@ -56,6 +59,16 @@ public class CourseFiles {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
+
+	public String getFileDescription() {
+		return fileDescription;
+	}
+
+	public void setFileDescription(String fileDescription) {
+		this.fileDescription = fileDescription;
+	}
+	
+	
 	
 	
 	

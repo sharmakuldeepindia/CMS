@@ -1,80 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  
-  <title>Header</title>
-    <div th:replace="fragments/header :: header-css"/>
+<head>
+
+<title>Header</title>
+<div th:replace="fragments/header :: header-css" />
 
 
 <style>
-
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
+.table {
+	width: 50%;
+	margin: auto
 }
-
-.dropup {
-    position: relative;
-    display: inline-block;
-}
-
-.dropup-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 150px;
-    bottom: 50px;
-    z-index: 1;
-}
-
-.dropup-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropup-content a:hover {background-color: #ccc}
-
-.dropup:hover .dropup-content {
-    display: block;
-}
-
-.dropup:hover .dropbtn {
-    background-color: #3e8e41;
 </style>
 
-  </head>
+</head>
 
 <body>
 	<div th:replace="fragments/header :: header"></div>
 	<div class="">
-	
-	
-	
-	<form action="#" th:action="@{/addCourse}" th:object="${course}" method="post">
-    <label for="courseName">Name</label>
-    <input type="text" th:field="*{courseName}" id="*{courseName}" placeholder="Name">
-    <span th:if="${#fields.hasErrors('courseName')}" th:errors="courseName"></span>
-    
-       <label for="courseDescription">Description</label>
-    <input type="text" th:field="*{courseDescription}" id="*{courseDescription}"
-     placeholder="Description">
-    <span th:if="${#fields.hasErrors('courseDescription')}" th:errors="courseDescription"></span>
-  
-    <input type="submit" value="Add User">   
-</form>
-	
-	
-	
-	
-	
-	
-	
-			<div th:replace="fragments/footer :: footer"></div>
+
+
+
+		<form action="#" th:action="@{/addCourse}" th:object="${course}"
+			method="post">
+			<h2>Add Course</h2>
+			<a th:href="@{/courseIndex}""> All Courses</a>
+			<table class="table table-bordered">
+
+				<tr>
+					<td><label for="courseName">Name</label></td>
+					<td><input type="text" th:field="*{courseName}"
+						id="*{courseName}" placeholder="Name"> <span
+						th:if="${#fields.hasErrors('courseName')}" th:errors="courseName"></span></td>
+				</tr>
+				<tr>
+					<td><label for="courseDescription">Description</label></td>
+					<td><input type="text" th:field="*{courseDescription}"
+						id="*{courseDescription}" placeholder="Description"> <span
+						th:if="${#fields.hasErrors('courseDescription')}"
+						th:errors="courseDescription"></span> <input
+						class="btn btn-primary" type="submit" value="Add Course">
+					</td>
+
+				</tr>
+
+			</table>
+
+
+
+
+
+
+		</form>
+
+
+
+
+
+
+
+		<div th:replace="fragments/footer :: footer"></div>
 		<script type="text/javascript">
 			
 		</script>

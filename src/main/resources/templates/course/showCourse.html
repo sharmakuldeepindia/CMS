@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Header</title>
+<div th:replace="fragments/header :: header-css" />
+
+
+<style>
+.table {
+	width: 50%;
+	margin: auto
+}
+</style>
+
+</head>
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="">
+
+
+		<div th:switch="course">
+			<h2 th:case="null">No users yet!</h2>
+			<div th:case="*">
+				<h2>Course</h2>
+				<a  th:href="@{/courseIndex}" 
+							 ">
+                    All Courses</a>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td th:text="${course.courseName}"></td>
+							<td th:text="${course.courseDescription}"></td>
+							<!--   <td><a th:href="@{/addCourseFiles/{id}(id=${course.id})}" class="btn btn-primary">
+                    Add Files</a></td>
+                     <td><a th:href="@{/view/{id}(id=${course.id})}" class="btn btn-primary">
+                    View</a></td>
+                   
+                    <td><a th:href="@{/edit/{id}(id=${course.id})}" class="btn btn-primary">
+                    Edit</a></td>
+                    <td><a th:href="@{/delete/{id}(id=${course.id})}" class="btn btn-primary">
+                    Delete</a></td> -->
+						</tr>
+					</tbody>
+				</table>
+
+				<h2>Course Files</h2>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>File Name</th>
+							<th>File Type</th>
+							<th>File Path</th>
+							<th>File Description</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="courseFile : ${courseFiles}">
+							<td th:text="${courseFile.fileName}"></td>
+							<td th:text="${courseFile.fileType}"></td>
+							<td th:text="${courseFile.fileLocation}"></td>
+							<td th:text="${courseFile.fileDescription}"></td>
+							<td><button class="btn btn-primary">Show</button></td>
+							 <td><a  th:href="@{/deleteCourseFile/{id}(id=${courseFile.id})}" 
+							 class="btn btn-danger">
+                    Delete</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+
+
+
+
+
+		<div th:replace="fragments/footer :: footer"></div>
+		<script type="text/javascript">
+			
+		</script>
+</body>
+</html>

@@ -11,5 +11,5 @@ import com.example.model.Course;
 @Transactional
 public interface CourseRepository extends JpaRepository<Course, Long>{
 
-		
+		Course findById(Long id);
 }
