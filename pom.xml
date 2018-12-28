@@ -6,7 +6,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>CMS</artifactId>
 	<version>1.0</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
@@ -100,12 +100,30 @@
 
 	<build>
 		<plugins>
+		
+		   <!-- Package as an executable jar/war -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                 <configuration>
+        <archive>
+          <manifest>
+            <addClasspath>true</addClasspath>
+            <classpathPrefix>lib/</classpathPrefix>
+            <mainClass>com.example.DemoApplication</mainClass>
+          </manifest>
+        </archive>
+      </configuration>
+            </plugin>
+		
+		<!--
+		
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
-	<!--
+
 			<plugin>
 				<groupId>com.samaxes.maven</groupId>
 				<artifactId>minify-maven-plugin</artifactId>
@@ -114,15 +132,18 @@
 					<execution>
 						<id>default-minify</id>
 						<configuration>
-					
-							 <cssSourceFiles> <cssSourceFile>home.css</cssSourceFile> </cssSourceFiles> 
-								
+						
+							 <cssSourceFiles> 
+							 <cssSourceFile>home.css</cssSourceFile> 
+							 </cssSourceFiles> 
+							
 							<cssSourceIncludes>
 								<cssSourceInclude>**</cssSourceInclude>
 							</cssSourceIncludes>
 							<cssSourceExcludes>
 								<cssSourceExclude>**/*.min.css</cssSourceExclude>
-							</cssSourceExcludes>  use one of them 1 -->
+							</cssSourceExcludes> 
+							-->	
 							<!-- use one of them 1 -->
 							<!-- <jsSourceFiles> <jsSourceFile>userHome.js</jsSourceFile> <jsSourceFile>index.js</jsSourceFile> 
 								<jsSourceFile>indexSocket.js</jsSourceFile> </jsSourceFiles>
@@ -132,7 +153,7 @@
 							<jsSourceExcludes>
 								<jsSourceExclude>**/*.min.js</jsSourceExclude>
 							</jsSourceExcludes>
-							 
+							
 						</configuration>
 						<goals>
 							<goal>minify</goal>
@@ -140,7 +161,7 @@
 					</execution>
 				</executions>
 			</plugin>
--->
+--> 
 
 		</plugins>
 	</build>

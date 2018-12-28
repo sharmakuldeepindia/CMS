@@ -11,4 +11,5 @@ public interface UserService {
 	public User findUserById(Long id);
 	
 	public User findUserByEmailAndPassword(String email, String password);
+	public Long findBytoken(String tokenValue);
 }

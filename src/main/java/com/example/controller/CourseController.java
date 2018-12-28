@@ -8,6 +8,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.kuldeep.rest.RestApiController;
+import com.example.kuldeep.rest.UserRestController;
 import com.example.model.Course;
 import com.example.model.CourseFiles;
 import com.example.model.User;
@@ -32,8 +33,9 @@ import com.example.service.UserService;
 
 @Controller
 public class CourseController {
-    public static final Logger logger = LoggerFactory.getLogger(RestApiController.class);
-    private static String UPLOADED_FOLDER = "/home/kuldeep/cms";
+    public static final Logger logger = LoggerFactory.getLogger(UserRestController.class);
+    @Value("${UPLOADED_FOLDER}")
+    private String UPLOADED_FOLDER;
 	@Autowired
 	CourseRepository courseRepo;
 	@Autowired
@@ -92,6 +94,7 @@ public class CourseController {
 	        			 model.addAttribute("status", status); 
 	        			 return "course/addCourseFiles/"+id;  
 	        		  }
+	        		  logger.info(UPLOADED_FOLDER+"********************************");
 	        		  File dir = new File(UPLOADED_FOLDER);
 	  	              for (int i = 0; i < files.length; i++) {
 	  	                MultipartFile file = files[i];

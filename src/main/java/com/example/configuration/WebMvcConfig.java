@@ -1,5 +1,6 @@
 package com.example.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,11 +12,16 @@ import com.example.kuldeep.rest.interceptor.AuthenticInterceptor;
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
+	@Autowired
+	AuthenticInterceptor authenticInterceptor;
+	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 		return bCryptPasswordEncoder;
 	}
+	
+	
 	
 	
 	  @Override
@@ -30,7 +36,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	 
 	      // This interceptor apply to URL like /admin/*
 	      // Exclude /admin/oldLogin
-	      registry.addInterceptor(new AuthenticInterceptor())//
+	      registry.addInterceptor(authenticInterceptor)//
 	            .addPathPatterns("/api/**")//
 	            .excludePathPatterns("/api/login");
 	   }

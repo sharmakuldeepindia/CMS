@@ -89,4 +89,11 @@ public class ErrorResponse {
 	public void setErrors(List<String> errors) {
 		this.errors = errors;
 	}
+
+	@Override
+	public String toString() {
+		return "ErrorResponse [timestamp=" + timestamp + ", status=" + status + ", message=" + message + ", path="
+				+ path + ", errors=" + errors + "]";
+	}
+	
 }

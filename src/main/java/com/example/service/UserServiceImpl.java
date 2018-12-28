@@ -36,6 +36,12 @@ public class UserServiceImpl implements UserService{
 		
 		return userRepository.findByEmailAndPassword(email,password);
 	}
+	@Override
+	public Long findBytoken(String tokenValue){
+		System.out.println("value of token in service:"+tokenValue);
+		
+		return userRepository.findByToken(tokenValue);
+	}
 	
 	@Override
 	public User findUserById(Long id) {
@@ -50,22 +56,25 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 
-	public void saveUser(User user) {
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setActive(1);
-        user.setTokenTimeStamp(1L);
-        Role userRole1 = roleRepository.findByRole("ADMIN");
-        Role userRole2 = roleRepository.findByRole("USER");
-        user.setTokenTimeStamp(System.currentTimeMillis());
-        if(user.getName()=="admin") {
-            user.setRoles(new HashSet<Role>(Arrays.asList(userRole1)));
+	public void saveUser(User user) {	
+		if(findUserByEmail(user.getEmail())==null) {
+			    user.setActive(1);
+		        user.setTokenTimeStamp(1L);
+		        Role userRole1 = roleRepository.findByRole("ADMIN");
+		        Role userRole2 = roleRepository.findByRole("USER");
+		        if(user.getName()=="admin") {
+		            user.setRoles(new HashSet<Role>(Arrays.asList(userRole1)));
 
-        }
-        else {
-            user.setRoles(new HashSet<Role>(Arrays.asList(userRole2)));
+		        }
+		        else {
+		            user.setRoles(new HashSet<Role>(Arrays.asList(userRole2)));
 
-        }
+		        }
+		 }
 		userRepository.save(user);
+		
+      
+	
 	}
 
 }
