@@ -1,0 +1,11 @@
+body{ }
+.fome-sec{ margin: 90px 102px 0px -87px; padding:20px;    }
+.input-group{ margin-top: 10px;  }
+.input-group{ margin: 10px auto; }
+.personal-password{ max-width: 100px; min-height: 100px; margin:0 0 0px  100px; }
+.btn-success{ background-color: #0c7d00; }
+.btn{ padding: 7px 65px; }
+.header{ background-color: #ff6101; padding: 10px; }
+.footer{ background-color: #35ffee; margin-top: 95px; }
+
+.image-bg{ background-image: url("images/bg.png");}
