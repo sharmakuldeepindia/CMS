@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>CMS</title>
+
+<div th:replace="fragments/header-new :: header-css" />
+</head>
+<body>
+	<div th:replace="fragments/header-new :: header"></div>
+
+	<div class="cl"></div>
+
+
+
+	<div class="content">
+		<div class="fome-sec">
+			<div class="container1">
+
+				<div class="row">
+					<div class=" col-md-12 ">
+
+
+						<div class="col-md-6">
+							<h1
+								style="color: #140e4c; float: left; text-align: center; margin-bottom: 20px;">Course</h1>
+						</div>
+						<div class="col-md-6">
+							<div class="pluse">
+								<a href="/cms/addCourse"><button
+										style="padding: 6px 12px; float: left; margin: 0 10px; text-align: center;"
+										type="button" class="btn btn-success">Add Course</button></a>
+							</div>
+						</div>
+
+
+
+
+						<div th:switch="courses">
+							<h2 th:case="null">No users yet!</h2>
+							<div th:case="*">
+								<table class="table table-dark table-bordered">
+									<thead>
+										<tr>
+											<th>S No.</th>
+											<th>Name</th>
+											<th>Description</th>
+											<th></th>
+											<th></th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="course, iStat : ${courses}">
+											<th th:text="${iStat.index+1}"></th>
+											<td th:text="${course.courseName}"></td>
+											<td th:text="${course.courseDescription}"></td>
+											<td><a
+												th:href="@{/addCourseFiles/{id}(id=${course.id})}"
+												class="btn btn-info"> Add Files</a></td>
+											<td><a th:href="@{/viewCourse/{id}(id=${course.id})}"
+												class="btn btn-info"> View</a></td>
+
+
+											<td><a th:href="@{/deleteCourse/{id}(id=${course.id})}"
+												class="btn btn-danger"> Delete</a></td>
+
+
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

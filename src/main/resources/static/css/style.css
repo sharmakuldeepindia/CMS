@@ -1,5 +1,5 @@
 body{ }
-.fome-sec{ margin: 90px 102px 0px -87px; padding:20px;    }
+.fome-sec{ margin: 20px 10px 0px -87px; padding:20px;    }
 .input-group{ margin-top: 10px;  }
 .input-group{ margin: 10px auto; }
 .personal-password{ max-width: 100px; min-height: 100px; margin:0 0 0px  100px; }
@@ -9,3 +9,71 @@ body{ }
 .footer{ background-color: #35ffee; margin-top: 95px; }
 
 .image-bg{ background-image: url("images/bg.png");}
+
+.header{ background-color: black;  
+ }
+
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0 0 0 -9px;
+  padding: 0;
+  width: 200px;
+  background-color: #000000;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+
+}
+.open>a:hover{ background-color:#000; }
+.nav li a:hover{ background-color:#000; }
+.pluse{  margin: 20px 0 0  300px; }
+
+.sidebar a {
+  display: block;
+  color: #fff;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 25%;
+  padding: 1px 6px;
+ 
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+.cl{clear: both;}
+.container{ width: 100%; margin: auto; }
+
+.logo{ width: 40px; height: 40px; margin: 5px 0 0 103px;  }
+.form-group{ margin-top: 30px; }
+.table{ margin-top: 60px; }
