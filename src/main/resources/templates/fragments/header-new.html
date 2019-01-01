@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css"
 	th:href="@{css/bootstrap.min.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{css/style.css}" />
+
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
 	integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
@@ -13,47 +14,52 @@
 
 </head>
 <div th:fragment="header">
-<div class="header" >
-	<div class="container" >
-		<div class="row">
-			<div class="col-md-6">
-				<img src="images/logo.png" class="logo">
-			</div>
-			<div class="col-md-4">
-				<i
-					style="color: #fff; margin-top: 17px; font-size: 20px; float: right;"
-					class="fas fa-bell"></i>
-			</div>
+	<div class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<img src="images/logo.png" class="logo">
+				</div>
+				<div class="col-md-4">
+					<i
+						style="color: #fff; margin-top: 17px; font-size: 20px; float: right;"
+						class="fas fa-bell"></i>
+				</div>
 
-			<div class="col-md-2">
-				<ul class="nav nav-pills">
+				<div class="col-md-2">
+					<ul class="nav nav-pills">
 
-					<li role="presentation" class="dropdown"><a
-						class="dropdown-toggle" data-toggle="dropdown" href="#"
-						role="button" aria-haspopup="true" aria-expanded="false"> <i
-							style="color: #fff; font-size: 30px;" class="fas fa-user-circle"></i><span
-							class="caret"></span>
-					</a>
-						<ul class="dropdown-menu">
-							<li><a href="#">My Profile</a></li>
-							<li><a href="#">Notification</a></li>
-							<li><a href="#">Logout</a></li>
-						</ul></li>
+						<li role="presentation" class="dropdown"><a
+							class="dropdown-toggle" data-toggle="dropdown" href="#"
+							role="button" aria-haspopup="true" aria-expanded="false"> <i
+								style="color: #fff; font-size: 30px;" class="fas fa-user-circle"></i><span
+								class="caret"></span>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">My Profile</a></li>
+								<li><a href="#">Notification</a></li>
+								<li>
+									<form th:action="@{/logout}" method="get">
+										<button class="btn btn-sm btn-danger" style="float: right"
+											name="registration" type="Submit">Logout</button>
+									</form>
+								</li>
+							</ul></li>
 
-				</ul>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 	<div class="container">
 		<div class="row">
 			<div class="side-menu-bar">
 
 				<div class="sidebar">
-					<a class="active" href="/cms/courseIndex"><i style="margin: 0 5px 0 5px;"
-						class="fa fa-book"></i>Courses</a> <a href="#"><img
-						src="images/img.png" width="13px" height="13px;"> Tests</a> <a
-						href="#"><i style="margin: 0 5px 0 5px;"
+					<a class="active" href="/cms/courseIndex"><i
+						style="margin: 0 5px 0 5px;" class="fa fa-book"></i>Courses</a> <a
+						href="#"><img src="images/img.png" width="13px" height="13px;">
+						Tests</a> <a href="#"><i style="margin: 0 5px 0 5px;"
 						class="fas fa-video aria-hidden="true"></i>Videos</a> <i></i>
 				</div>
 			</div>

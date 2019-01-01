@@ -4,7 +4,6 @@
 
 <title>Header</title>
 <div th:replace="fragments/header :: header-css" />
-
 <style>
 .table {
 	width: 50%;
@@ -16,40 +15,63 @@
 
 <body>
 	<div th:replace="fragments/header :: header"></div>
-	<div class="">
-		<h2 th:if="${status}">${status}</h2>
-		<h2>Course File Upload</h2>
-		<a th:href="@{/courseIndex}""> All Courses</a>
-		<form method="POST" action="/cms/addCourseFiles" th:object="${course}"
-			enctype="multipart/form-data">
+	<div class="content">
+		<div class="fome-sec">
+			<div class="container1">
 
-			<table class="table table-bordered">
-
-				<tr>
-					<td hidden="hidden"><input type="text" th:field="*{id}"
-						id="*{id}" placeholder="Id"></td>
-					<td>Please select file1 :<input type="file" name="file">
-					</td>
-					<td>File Description1: <input type="text" name="description"></td>
-				</tr>
-
-				<tr>
-					<td>Please select file2 :<input type="file" name="file">
-					</td>
-					<td>File Description2: <input type="text" name="description"></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input class="btn btn-primary" type="submit"
-						value="Upload"></td>
-				</tr>
-
-			</table>
+				<div class="row">
+					<div class=" col-md-12 ">
 
 
+						<div class="col-md-6">
+							<h1
+								style="color: #140e4c; float: left; text-align: center; margin-bottom: 20px;">Add
+								Course Files</h1>
+						</div>
+						<div class="col-md-6">
+							<div class="pluse">
+								<a href="/cms/courseIndex"><button
+										style="padding: 6px 12px; float: left; margin: 0 10px; text-align: center;"
+										type="button" class="btn btn-success">Course List</button></a>
+							</div>
+						</div>
+					</div>
 
 
-		</form>
+					<div class="">
+						<h2 th:if="${status}">${status}</h2>
+						<form method="POST" action="/cms/addCourseFiles"
+							th:object="${course}" enctype="multipart/form-data">
+
+							<table class="table table-bordered">
+
+								<tr>
+									<td hidden="hidden"><input type="text" th:field="*{id}"
+										id="*{id}" placeholder="Id"></td>
+									<td>Please select file1 :<input type="file" name="file">
+									</td>
+									<td>File Description1: <input type="text"
+										name="description"></td>
+								</tr>
+
+								<tr>
+									<td>Please select file2 :<input type="file" name="file">
+									</td>
+									<td>File Description2: <input type="text"
+										name="description"></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><input class="btn btn-primary" type="submit"
+										value="Upload"></td>
+								</tr>
+
+							</table>
+
+
+
+
+						</form>
 
 
 
@@ -57,11 +79,16 @@
 
 
 
+					</div>
 
 
-		<div th:replace="fragments/footer :: footer"></div>
-		<script type="text/javascript">
-			
-		</script>
+
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+		
+	</script>
 </body>
 </html>

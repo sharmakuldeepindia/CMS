@@ -17,16 +17,33 @@
 
 <body>
 	<div th:replace="fragments/header :: header"></div>
-	<div class="">
+<div class="content">
+		<div class="fome-sec">
+			<div class="container1">
+
+				<div class="row">
+					<div class=" col-md-12 ">
+
+
+						<div class="col-md-6">
+							<h1
+								style="color: #140e4c; float: left; text-align: center; margin-bottom: 20px;">
+								Course Details</h1>
+						</div>
+						<div class="col-md-6">
+							<div class="pluse">
+								<a href="/cms/courseIndex"><button
+										style="padding: 6px 12px; float: left; margin: 0 10px; text-align: center;"
+										type="button" class="btn btn-success">Course List</button></a>
+							</div>
+						</div>
+					</div>
 
 
 		<div th:switch="course">
 			<h2 th:case="null">No users yet!</h2>
 			<div th:case="*">
-				<h2>Course</h2>
-				<a  th:href="@{/courseIndex}" 
-							 ">
-                    All Courses</a>
+
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -52,15 +69,14 @@
 					</tbody>
 				</table>
 
-				<h2>Course Files</h2>
 				<table class="table table-bordered">
 					<thead>
 						<tr>
 							<th>File Name</th>
 							<th>File Type</th>
-							<th>File Path</th>
+						
 							<th>File Description</th>
-							<th></th>
+						
 							<th></th>
 						</tr>
 					</thead>
@@ -68,9 +84,9 @@
 						<tr th:each="courseFile : ${courseFiles}">
 							<td th:text="${courseFile.fileName}"></td>
 							<td th:text="${courseFile.fileType}"></td>
-							<td th:text="${courseFile.fileLocation}"></td>
+				
 							<td th:text="${courseFile.fileDescription}"></td>
-							<td><button class="btn btn-primary">Show</button></td>
+							
 							 <td><a  th:href="@{/deleteCourseFile/{id}(id=${courseFile.id})}" 
 							 class="btn btn-danger">
                     Delete</a></td>
@@ -80,13 +96,6 @@
 			</div>
 		</div>
 
-
-
-
-
-
-
-		<div th:replace="fragments/footer :: footer"></div>
 		<script type="text/javascript">
 			
 		</script>

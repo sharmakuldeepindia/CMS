@@ -4,18 +4,13 @@
 
 <head th:fragment="header-css">
 
-<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" href="../../css/home.css" />
-<link rel="stylesheet" type="text/css" th:href="@{/css/theme.blue.css}" href="../../css/theme.blue.css" />
-<!-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script> -->
-<script type="text/javascript" th:src="@{/js/jquery/jquery-1.9.1.js}"></script>
-<script type="text/javascript" th:src="@{/js/jquery/jquery-ui.js}"></script>
-<link rel="stylesheet"	href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	
-	<link rel="stylesheet" type="text/css" th:href="@{/css/footable.bootstrap.min.css}" />
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"  href=/cms/css/style.css">
+<link rel="stylesheet" type="text/css" href="/cms/css/bootstrap.min.css"/>
 
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+	integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+	crossorigin="anonymous">
 
 
 <!--  data table cdn files**************************
@@ -27,17 +22,65 @@
 -->
 </head>
 <body>
- <div class="container">
-	<div th:fragment="header">
- 	<div style="height:30px;background-color:#f0ad4e;">
- 		<button class="btn btn-sm btn-success" style="float:right" th:utext="${userName}"></button>
- 		<form th:action="@{/logout}" method="get">
-			<button class="btn btn-sm btn-danger" style="float:right" name="registration"
-				type="Submit">Logout</button>
-		</form>
- 	</div>	
-	 </div> 
-</div> 
+<div th:fragment="header">
+	<div class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2">
+					<img src="/cms/images/logo.png" class="logo">
+				</div>
+				<div class="col-md-10">
+					
+			
+
+				
+					<ul class="nav nav-pills" style="float:right">
+
+						<li role="presentation" class="dropdown"><a
+							class="dropdown-toggle" data-toggle="dropdown" href="#"
+							role="button" aria-haspopup="true" aria-expanded="false"> <i
+								style="color: #fff; font-size: 30px;" class="fas fa-user-circle"></i><span
+								class="caret"></span>
+						</a>
+							<ul class="dropdown-menu" style="text-align:center">
+								<li><a href="#">My Profile</a></li>
+								<li><a href="#">Notification</a></li>
+								<li>
+									<form th:action="@{/logout}" method="get">
+										<button class="btn btn-danger" style=""
+											name="registration" type="Submit">Logout</button>
+									</form>
+								</li>
+							</ul></li>
+
+					</ul>
+					<i
+						style="color: #fff; margin-top: 17px; font-size: 20px; float: right;padding-right:20px"
+						class="fas fa-bell"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container" style="margin-left:0px">
+		<div class="row">
+			<div class="side-menu-bar">
+
+				<div class="sidebar">
+					<a class="active" href="/cms/courseIndex"><i
+						style="margin: 0 5px 0 5px;" class="fa fa-book"></i>Courses</a> <a
+						href="#"><img src="/cms/images/img.png" width="13px" height="13px;">
+						Tests</a> <a href="#"><i style="margin: 0 5px 0 5px;"
+						class="fas fa-video aria-hidden="true"></i>Videos</a> <i></i>
+				</div>
+			</div>
+		</div>
+	</div> 
+	
+	
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="/cms/js/bootstrap.min.js"></script>
 </body>
 </html>
 

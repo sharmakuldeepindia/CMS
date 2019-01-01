@@ -71,7 +71,7 @@ public class CourseController {
 		@GetMapping("/courseIndex")
 	    public String showAllCourses(Model model) {
 			 model.addAttribute("courses", courseRepo.findAll());
-		        return "course/courseIndex1";
+		        return "course/courseIndex";
 	}
 		
 	    @RequestMapping(value = "/addCourseFiles/{id}", method = RequestMethod.GET)
